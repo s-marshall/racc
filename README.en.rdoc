@@ -43,7 +43,7 @@
   For details, try "ruby setup.rb --help".
 
 
-  If you don't have C Compiler
+  If you don't have C compiler
   ----------------------------
 
   You can install Racc without C compilers. Type following
