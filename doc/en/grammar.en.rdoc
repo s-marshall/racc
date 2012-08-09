@@ -4,13 +4,12 @@
 
 == Class Block and User Code Block
 
-There's two block on toplevel.
-one is 'class' block, another is 'user code' block. 'user code' block MUST
-places after 'class' block.
+The top level is divided into a class block and a user code block. 
+The user code block must be after the class definition in the class block.
 
 == Comment
 
-You can insert comment about all places. Two style comment can be used,
+Comments can be inserted almost anywhere in the grammar file except for an exYou can insert comment about all places. Two style comment can be used,
 Ruby style (#.....) and C style (/*......*/) .
 
 == Class Block
