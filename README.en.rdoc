@@ -46,19 +46,19 @@
   If you don't have C compiler
   ----------------------------
 
-  You can install Racc without C compilers. Type following
-  command in config phase.
+  You can install Racc without a C compiler. Type following
+  command in the config phase.
 
     $ ruby setup.rb config --without-ext
 
 
 == Testing Racc
 
-  Racc comes with simple calculator. To compile this, on shell:
+  Racc comes with a simple calculator. To compile this, type:
 
       $ racc -o calc calc.y
 
-  This process takes a few seconds (or less). Then to run the calculator,
+  This process takes a few seconds (or less). Now, to run the calculator,
   type:
 
       $ ruby calc
