@@ -17,6 +17,7 @@ Ruby style (#.....) and the C style (/*......*/) .
 The class block has the following form.
 
 --
+
 class CLASS_NAME [< superclass]
   [precedence]
   [token declarations]
@@ -27,6 +28,7 @@ class CLASS_NAME [< superclass]
 rule
   grammar description
 end
+
 --
 
 CLASS_NAME is a name of parser class.
