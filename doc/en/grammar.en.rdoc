@@ -71,13 +71,13 @@ Almost all Ruby statements can be used in actions, but some cannot be used. The 
 
 These are very hard problems and will probably not be completely solved.
 
-The return method of left-hand side value ($$) is changed by an option. By default, the local variable result (val[0] is
-the default) represents the left-hand side value. When the action block is omitted, the result value becomes
-the left-hand side value. When this value is explicitly returned by return, this value becomes the result.
-If no_result_var is specified in options, the left-hand side value becomes the value of the last statement
+The return method of left-hand side (lhs) value ($$) is changed by an option. By default, the local variable result (val[0] is
+the default) represents the lhs value. When the action block is omitted, the result value becomes
+the lhs value. When this value is explicitly returned by return, this value becomes the result.
+If no_result_var is specified in options, the lhs value becomes the value of the last statement
 in the action block (same as in a Ruby method).
 
-In both cases, the action can be omitted, and if the action is omitted, the left-hand side value is always val[0].
+In both cases, the action can be omitted, and if the action is omitted, the lhs value is always val[0].
 
 Here is an example of an entire grammar block.
 
@@ -97,20 +97,44 @@ Here is an example of an entire grammar block.
 You can use the special variables in an action. Examples of these variables are shown below.
 The content in the parentheses is a yacc expression.
 
+The value of left-hand side (lhs) is 
+
   * result ($$)
 
-The value of left-hand side (lhs). A default value is val[0].
+This has the default value of val[0].
+
+The array of symbols on the right-hand side (rhs) is
 
   * val ($1,$2,$3...)
 
-An array of value of right-hand side (rhs).
+This is a Ruby array, the index starts from 0. This array is created each time,
+and can be freely changed and deleted.
+
+The stack of values is
 
   * _values (...$-2,$-1,$0)
 
-A stack of values.
-DO NOT MODIFY this stack unless you know what you are doing.
+This object which is used by the racc core is passed unchanged. DO NOT MODIFY this stack unless you know what you are doing.
 
-== Operator Precedance
+There are embedded action is a special format of actions. These can be described at the preferred location in the
+token string. An example of the embedded action is shown below. When described as
+
+ target: A B { puts 'test test' } C D { normal action }
+
+puts is executed when A B is detected. In addition, the embedded action has the value of the body. In the
+following example, p val[1] at the end of
+
+ target: A { result = 1 } B { p val[1] }
+
+displays the value 1 of the embedded action and is not the B value.
+
+The embedded action operates entirely the same as when a non-terminal symbol having an empty rule is appended.
+The above example has the same meaning as
+
+ target: A nonterm B { p val[1] } nonterm: /* empty rule */ { result = 1 }
+
+
+== Operator Precedence
 
 This function is equal to '%prec' in yacc.
 To designate this block:
