@@ -58,21 +58,16 @@ The grammar can be written as follows between the reserved words rule and end, a
 (action) is a Ruby code block surrounded by curly braces. The (action) can be omitted.
 If omitted, the empty string '' is used.
 
---
 
-{ print val[0]
-  puts val[1] }
-
---
+ { print val[0]
+   puts val[1] }
 
 Almost all Ruby statements can be used in actions, but some cannot be used. The unusable statements are:
 
---
  * here document
  * =begin...-end comment
  * regular expression beginning with whitespace
  * % operator and %r regular expression
---
 
 These are very hard problems and will probably not be completely solved.
 
@@ -85,20 +80,19 @@ in the action block (same as in a Ruby method).
 In both cases, the action can be omitted, and if the action is omitted, the left-hand side value is always val[0].
 
 Here is an example of an entire grammar block.
---
-rule
-  goal: definition rules source { result = val }
 
-  definition: /* none */   { result = [] }
-    | definition startdesig  { result[0] = val[1] }
-    | definition
-             precrule   # this line continues from the above line
-             {
-               result[1] = val[1]
-             }
+ rule
+   goal: definition rules source { result = val }
 
-  startdesig: START TOKEN
---
+   definition: /* none */   { result = [] }
+     | definition startdesig  { result[0] = val[1] }
+     | definition
+              precrule   # this line continues from the above line
+              {
+                result[1] = val[1]
+              }
+
+   startdesig: START TOKEN
 
 You can use the special variables in an action. Examples of these variables are shown below.
 The content in the parentheses is a yacc expression.
