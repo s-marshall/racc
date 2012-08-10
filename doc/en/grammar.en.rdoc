@@ -15,6 +15,7 @@ Ruby style (#.....) and the C style (/*......*/) .
 == Class Block
 
 The class block has the following form.
+
 --
 class CLASS_NAME [< superclass]
   [precedence]
