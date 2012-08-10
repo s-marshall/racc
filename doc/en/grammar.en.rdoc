@@ -16,20 +16,16 @@ Ruby style (#.....) and the C style (/*......*/) .
 
 The class block has the following form.
 
---
-
-class CLASS_NAME [< superclass]
-  [precedence]
-  [token declarations]
-  [options]
-  [expected number of S/R conflict]
-  [token symbol conversion]
-  [start rule]
-rule
-  grammar description
-end
-
---
+ class CLASS_NAME [< superclass]
+   [precedence]
+   [token declarations]
+   [options]
+   [expected number of S/R conflict]
+   [token symbol conversion]
+   [start rule]
+ rule
+   grammar description
+ end
 
 CLASS_NAME is a name of parser class.
 This is the Ruby name of generated parser class.
