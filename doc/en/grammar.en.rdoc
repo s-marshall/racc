@@ -9,28 +9,28 @@ The user code block must be after the class definition in the class block.
 
 == Comment
 
-Comments can be inserted almost anywhere in the grammar file except for an exYou can insert comment about all places. Two style comment can be used,
-Ruby style (#.....) and C style (/*......*/) .
+Comments can be inserted almost anywhere in the grammar file except for a few exceptions. The two styles of comments are the
+Ruby style (#.....) and the C style (/*......*/) .
 
 == Class Block
 
-The class block is formed like this:
+The class block has the following form.
 --
-class CLASS_NAME
-  [precedance table]
-  [token declearations]
-  [expected number of S/R conflict]
+class CLASS_NAME [< superclass]
+  [precedence]
+  [token declarations]
   [options]
-  [semantic value convertion]
+  [expected number of S/R conflict]
+  [token symbol conversion]
   [start rule]
 rule
-  GRAMMARS
+  grammar description
+end
 --
 CLASS_NAME is a name of parser class.
-This is the name of generating parser class.
+This is the Ruby name of generated parser class.
 
-If CLASS_NAME includes '::', Racc outputs module clause.
-For example, writing "class M::C" causes creating the code bellow:
+If CLASS_NAME includes '::' as in M::C, the class definition is nested in the module M.
 --
 module M
   class C
@@ -39,6 +39,10 @@ module M
   end
 end
 --
+
+In addition, a superclass can be specified in the same syntax as Ruby. However, this superclass greatly affects
+parser operation and is not specified unless particularly needed. This is provided for future extensions, but does
+not have to specified currently.
 
 == Grammar Block
 
