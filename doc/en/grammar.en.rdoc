@@ -37,12 +37,14 @@ This is the Ruby name of generated parser class.
 If CLASS_NAME includes '::' as in M::C, the class definition is nested in the module M.
 
 --
+
 module M
   class C
     :
     :
   end
 end
+
 --
 
 In addition, a superclass can be specified in the same syntax as Ruby. However, this superclass greatly affects
