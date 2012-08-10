@@ -27,10 +27,12 @@ rule
   grammar description
 end
 --
+
 CLASS_NAME is a name of parser class.
 This is the Ruby name of generated parser class.
 
 If CLASS_NAME includes '::' as in M::C, the class definition is nested in the module M.
+
 --
 module M
   class C
@@ -100,8 +102,9 @@ rule
 
   startdesig: START TOKEN
 --
+
 You can use the special variables in an action. Examples of these variables are shown below.
-The contents in parentheses is a yacc expression.
+The content in the parentheses is a yacc expression.
 
   * result ($$)
 
