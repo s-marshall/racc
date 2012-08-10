@@ -57,11 +57,13 @@ The grammar block describes a grammar which is can be recognized by the parser g
 The grammar can be written as follows between the reserved words rule and end, and has the syntax below.
 
 --
+
 (token): (token) (token) (token).... (action)
 
 (token): (token) (token) (token).... (action)
        | (token) (token) (token).... (action)
        | (token) (token) (token).... (action)
+
 --
 
 (action) is the action executed when the corresponding (token)s are found.
@@ -69,8 +71,10 @@ The grammar can be written as follows between the reserved words rule and end, a
 If omitted, the empty string '' is used.
 
 --
+
 { print val[0]
   puts val[1] }
+
 --
 
 Almost all Ruby statements can be used in actions, but some cannot be used. The unusable statements are:
